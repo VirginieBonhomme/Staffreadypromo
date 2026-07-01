@@ -11,7 +11,7 @@
   THINGS TO SWAP BEFORE YOU GO LIVE (search for SWAP):
    1. Booking link: replace the href="#book" targets or the
       mailto in the contact section with your Calendly URL.
-   2. Email: replace hello@staffready.ops with your real address.
+   2. Email: replace hello@staffreadyops.com with your real address.
    3. Busy Bot Labs link: confirm https://busybotlabs.com is right.
   ============================================================
 -->
@@ -267,6 +267,7 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.08
 .cta-form .form-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
 .cta-form .form-note{font-size:.9rem;color:var(--muted);max-width:64ch;margin:0}
 .cta-form .form-error{color:var(--critical);font-size:.95rem;min-height:1.2em;margin-top:4px}
+.cta-form .form-success{color:var(--brass);font-size:.95rem;min-height:1.2em;margin-top:4px}
 .cta-form .btn-primary{padding:16px 18px;width:100%;border-radius:14px;font-size:.95rem;background:var(--brass);color:var(--card);border:none}
 @media (max-width:760px){
   .cta-form-card{padding:24px 20px}
@@ -522,7 +523,7 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
               <li>Hands-on handoff support</li>
             </ul>
             <p class="price-note">Pricing depends on number of roles, stations, SOPs, and onsite needs.</p>
-            <a class="btn btn-primary" href="mailto:hello@staffready.ops?subject=StaffReady%20Custom%20Quote">Request a Quote <span class="arr">&rarr;</span></a>
+            <a class="btn btn-primary" href="mailto:hello@staffreadyops.com?subject=StaffReady%20Custom%20Quote">Request a Quote <span class="arr">&rarr;</span></a>
           </div>
         </article>
 
@@ -546,7 +547,7 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
               <li>Priority updates for menu, process, or staffing changes</li>
             </ul>
             <p class="price-note">Best for teams that want StaffReady to stay actively maintained throughout the year</p>
-            <a class="btn btn-primary" href="mailto:hello@staffready.ops?subject=StaffReady%20Premium">Discuss Premium <span class="arr">&rarr;</span></a>
+            <a class="btn btn-primary" href="mailto:hello@staffreadyops.com?subject=StaffReady%20Premium">Discuss Premium <span class="arr">&rarr;</span></a>
           </div>
         </article>
       </div>
@@ -563,7 +564,7 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
         <p>Tell us the gap in your line, and we’ll follow up with the documentation support your restaurant needs.</p>
       </div>
       <div class="cta-form-card">
-        <form id="kitchen-form" action="mailto:hello@staffready.ops?subject=Kitchen%20Documentation%20Request" method="post" enctype="text/plain">
+        <form id="kitchen-form" action="https://formspree.io/f/mdarwwyr" method="POST">
           <div class="form-group">
             <label for="restaurant">Restaurant name</label>
             <input id="restaurant" name="Restaurant" type="text" placeholder="Your restaurant or kitchen" required>
@@ -608,9 +609,9 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
       <h2>Let's walk it through together.</h2>
       <p>We show StaffReady.ops live, in person or on Zoom, built around your menu and your roles, so you can see exactly how it fits before you commit.</p>
       <!-- SWAP: booking link -->
-      <a class="btn btn-primary" href="mailto:hello@staffready.ops?subject=StaffReady.ops%20demo">Book a Demo <span class="arr">&rarr;</span></a>
+      <a class="btn btn-primary" href="mailto:hello@staffreadyops.com?subject=StaffReady.ops%20demo">Book a Demo <span class="arr">&rarr;</span></a>
       <!-- SWAP: email -->
-      <p class="cta-mail">or email <a href="mailto:hello@staffready.ops">hello@staffready.ops</a></p>
+      <p class="cta-mail">or email <a href="mailto:hello@staffreadyops.com">hello@staffreadyops.com</a></p>
     </div>
   </section>
 
@@ -643,15 +644,38 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
     kitchenForm.addEventListener('submit', function(e){
       e.preventDefault();
       if(!kitchenForm.reportValidity()){
+        formError.className = 'form-error';
         formError.textContent = 'Please fill in the required kitchen details so we can respond fast.';
         return;
       }
-      formError.textContent = '';
+
+      var endpoint = kitchenForm.getAttribute('action') || 'https://formspree.io/f/mdarwwyr';
+      if(endpoint.indexOf('your-form-id') !== -1){
+        formError.className = 'form-error';
+        formError.textContent = 'Replace the Formspree endpoint in the form action with your real Formspree ID before publishing.';
+        return;
+      }
+
+      formError.className = 'form-success';
+      formError.textContent = 'Sending your request…';
+
       var data = new FormData(kitchenForm);
-      var body = [];
-      data.forEach(function(value, key){ if(value) body.push(key + ': ' + value); });
-      var mailto = 'mailto:hello@staffready.ops?subject=' + encodeURIComponent('Kitchen Documentation Request') + '&body=' + encodeURIComponent(body.join('\n'));
-      window.location.href = mailto;
+      fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: {'Accept': 'application/json'}
+      }).then(function(response){
+        if(response.ok){
+          kitchenForm.reset();
+          formError.className = 'form-success';
+          formError.textContent = 'Thanks — your request is on its way. We will follow up within 1 business day.';
+        } else {
+          throw new Error('Submission failed');
+        }
+      }).catch(function(){
+        formError.className = 'form-error';
+        formError.textContent = 'Something went wrong while sending. Please try again or email hello@staffreadyops.com directly.';
+      });
     });
   }
 
