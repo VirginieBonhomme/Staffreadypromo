@@ -203,41 +203,6 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.08
 .step h3{font-size:1.55rem;margin-bottom:10px;font-weight:500}
 .step p{color:var(--muted);font-size:.95rem;line-height:1.62}
 
-/* ---- pricing ---- */
-.pricing{padding:68px 0;border-top:1px solid rgba(255,255,255,.08);background:var(--primary);color:#fff}
-.price-head{display:grid;grid-template-columns:minmax(0,.92fr) minmax(260px,.48fr);gap:34px;align-items:end;margin-bottom:30px}
-.price-head .kicker{color:#e3c896}
-.price-head .kicker::before{background:#e3c896}
-.price-head h2{font-size:clamp(2rem,4vw,2.75rem);margin:12px 0 0;color:#fff;max-width:12ch}
-.price-head p{color:rgba(255,255,255,.68);font-size:.98rem;line-height:1.58;margin:0}
-.price-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
-.price-card{background:#fefcf8;color:var(--text);padding:24px;display:flex;flex-direction:column;min-height:100%}
-.price-card.featured{background:#fff}
-.price-eyebrow{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:16px;display:block}
-.price-title{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--border-light)}
-.price-title h3{font-size:1.55rem;font-weight:500;margin:0}
-.price-tag{text-align:left;flex:0 0 auto}
-.price-big{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2.25rem,3.6vw,3rem);line-height:.92;color:var(--text);display:block}
-.price-unit{color:var(--muted);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:8px}
-.price-then{margin-top:10px;color:var(--muted);font-size:.88rem;line-height:1.4}
-.price-then b{color:var(--text);font-weight:700}
-.price-desc{margin:14px 0 0;color:var(--muted);font-size:.92rem;line-height:1.48}
-.price-list{padding-top:18px;display:flex;flex-direction:column;flex:1}
-.price-subhead{margin:0 0 10px;color:var(--text);font-size:.64rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
-.price-list ul{list-style:none;margin:0 0 18px;padding:0}
-.price-list li{position:relative;padding-left:18px;margin-bottom:7px;font-size:.9rem;color:var(--text);line-height:1.38}
-.price-list li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;background:var(--brass)}
-.price-note{margin:auto 0 16px;color:var(--muted);font-size:.84rem;line-height:1.45;border-top:1px solid var(--border-light);padding-top:14px}
-.price-list .btn{width:100%;justify-content:center}
-.security-note{margin-top:14px;border:1px solid rgba(255,255,255,.14);padding:14px 16px;color:rgba(255,255,255,.68);font-size:.88rem;line-height:1.5}
-.security-note strong{color:#e3c896;font-weight:700}
-
-@media (max-width:860px){
-  .price-head,.price-cards{grid-template-columns:1fr}
-  .price-head{gap:18px}
-  .price-head h2{max-width:13ch}
-}
-
 /* ---- final CTA (mirrors the dark nav, bookends the page) ---- */
 .cta{background:var(--primary);color:#fff;padding:88px 0}
 .cta-inner{max-width:680px;margin:0 auto;text-align:center;padding:0 28px}
@@ -312,7 +277,6 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
       <li><a href="#problem">Why</a></li>
       <li><a href="#inside">What's Inside</a></li>
       <li><a href="#how">How It Works</a></li>
-      <li><a href="#pricing">Pricing</a></li>
       <!-- SWAP: booking link -->
       <li><a class="nav-cta" href="#book">Book a Demo</a></li>
     </ul>
@@ -464,100 +428,6 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="wrap">
-      <div class="price-head">
-        <div>
-          <span class="kicker">Pricing</span>
-          <h2>Simple enough to approve.</h2>
-        </div>
-        <p>Three clear levels: launch fast, document deeper, or keep the playbook actively maintained.</p>
-      </div>
-
-      <div class="price-cards">
-        <article class="price-card featured">
-          <span class="price-eyebrow">Most restaurants start here</span>
-          <div class="price-title">
-            <h3>StaffReady Standard</h3>
-            <div class="price-tag">
-              <span class="price-big">$1,000</span>
-              <span class="price-unit">one-time setup</span>
-            </div>
-          </div>
-          <p class="price-then">then <b>$200 / month</b> for hosting, updates, and support</p>
-          <p class="price-desc">A branded, mobile-ready playbook configured from a proven base.</p>
-          <div class="price-list">
-            <h4 class="price-subhead">Includes</h4>
-            <ul>
-              <li>Remote intake and branded setup</li>
-              <li>Department of Health key SOP library</li>
-              <li>Menu, allergen matrix, and Big 9 mapping</li>
-              <li>Opening, closing, and role checklists</li>
-              <li>Up to 5 house-specific playbook items, such as SOPs, checklists, recipe cards, or role guides</li>
-              <li>Hosting, support, and 2 light updates/month</li>
-            </ul>
-            <p class="price-note"><strong>Turnaround:</strong> about one week after intake.</p>
-            <a class="btn btn-primary" href="#book">Book a Demo <span class="arr">&rarr;</span></a>
-          </div>
-        </article>
-
-        <article class="price-card">
-          <span class="price-eyebrow">For complex operations</span>
-          <div class="price-title">
-            <h3>StaffReady Custom</h3>
-            <div class="price-tag">
-              <span class="price-big">$3,000</span>
-              <span class="price-unit">starting price</span>
-            </div>
-          </div>
-          <p class="price-then">Quoted by scope, starting at <b>$3,000</b>, then <b>$500 / month</b> for hosting, updates, and support</p>
-          <p class="price-desc">Onsite capture and bespoke documentation for more complex operations.</p>
-          <div class="price-list">
-            <h4 class="price-subhead">INCLUDES</h4>
-            <ul>
-              <li>Onsite interviews with key staff</li>
-              <li>Workflow photos and short process videos for selected procedures</li>
-              <li>Up to 12 house-specific playbook items, including SOPs, checklists, recipe cards, role guides, and multi-station or multi-role documentation</li>
-              <li>Bespoke role-by-role SOPs</li>
-              <li>Hands-on handoff support</li>
-              <li>4 light updates/month</li>
-            </ul>
-            <p class="price-note">Pricing depends on number of roles, stations, playbook items, and onsite needs.</p>
-            <a class="btn btn-primary" href="mailto:hello@staffreadyops.com?subject=StaffReady%20Custom%20Quote">Request a Quote <span class="arr">&rarr;</span></a>
-          </div>
-        </article>
-
-        <article class="price-card">
-          <span class="price-eyebrow">Premium documentation partner</span>
-          <div class="price-title">
-            <h3>StaffReady Premium</h3>
-            <div class="price-tag">
-              <span class="price-big">$6,000+</span>
-              <span class="price-unit">starting price</span>
-            </div>
-          </div>
-          <p class="price-then">then <b>$750 / month</b> for ongoing documentation support</p>
-          <p class="price-desc">A higher-touch documentation partnership with ongoing refreshes.</p>
-          <div class="price-list">
-            <h4 class="price-subhead">Includes</h4>
-            <ul>
-              <li>Deep workflow photos and short process videos for priority procedures</li>
-              <li>Up to 25 house-specific playbook items, including SOPs, checklists, recipe cards, role guides, onboarding pages, and food-safety references</li>
-              <li>Bilingual core training support</li>
-              <li>Quarterly refresh to keep the playbook current</li>
-              <li>Priority updates for menu, process, or staffing changes</li>
-              <li>6 updates/month</li>
-            </ul>
-            <p class="price-note">Best for teams that want StaffReady to stay actively maintained throughout the year.</p>
-            <a class="btn btn-primary" href="mailto:hello@staffreadyops.com?subject=StaffReady%20Premium">Discuss Premium <span class="arr">&rarr;</span></a>
-          </div>
-        </article>
-      </div>
-      <p class="security-note"><strong>Security first:</strong> client data, workflows, and private playbook links are handled with controlled access and conservative sharing.</p>
-    </div>
-  </section>
-
   <!-- KITCHEN CTA FORM -->
   <section class="cta-form" id="book">
     <div class="wrap">
@@ -628,7 +498,6 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
       <a href="#problem">Why</a>
       <a href="#inside">Inside</a>
       <a href="#how">How</a>
-      <a href="#pricing">Pricing</a>
       <a href="#book">Demo</a>
     </nav>
   </div>
